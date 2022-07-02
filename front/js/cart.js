@@ -192,7 +192,6 @@ function form(event) {
   event.preventDefault();
   let bodyContact = requestContact();
 
-  //Impossible de faire le Fetch si les données ne son pas bonnes
   if (
     ValidFirstName(OrderForm.firstName) &&
     ValidLastName(OrderForm.lastName) &&
@@ -212,11 +211,12 @@ function form(event) {
       })
       .then(function (data) {
         console.log(data);
-        //let OrderId = data.orderId;
-        //window.location.href = "confirmation.html?OrderId=" + OrderId;
+        let OrderId = data.orderId;
+        window.location.href = "confirmation.html?OrderId=" + OrderId;
       });
   } else {
     console.log("Donné non valide");
+    //const xhttp = new XMLHttpRequest();
   }
 }
 
@@ -269,7 +269,6 @@ OrderForm.firstName.addEventListener("change", function () {
 });
 
 function ValidFirstName(input) {
-  //let FormValidFirstName = document.getElementById("firstName");
   let ErrorFirstName = document.getElementById("firstNameErrorMsg");
   let FirstNameRegExp = new RegExp("^[a-zA-Z]{3,25}$");
   let TestFirstname = FirstNameRegExp.test(input.value);
@@ -288,7 +287,6 @@ OrderForm.lastName.addEventListener("change", function () {
 });
 
 function ValidLastName(inputlastName) {
-  //let FormValidLastName = document.getElementById("lastName");
   let ErrorLastName = document.getElementById("lastNameErrorMsg");
   let LastNameRegExp = new RegExp("^[a-zA-Z]+$");
   let TestLastNameRegExp = LastNameRegExp.test(inputlastName.value);
@@ -308,7 +306,6 @@ OrderForm.address.addEventListener("change", function () {
 
 function ValidAddress(inputaddress) {
   console.log(inputaddress.value);
-  //let FormValidAddress = document.getElementById("address");
   let ErrorAddress = document.getElementById("addressErrorMsg");
   let AddressRegExp = new RegExp("^[A-Za-z0-9s ,']{5,80}$");
   let TestAddressRegExp = AddressRegExp.test(inputaddress.value);
@@ -327,7 +324,6 @@ OrderForm.city.addEventListener("change", function () {
 });
 
 function ValidCity(inputcity) {
-  //let FormValidCity = document.getElementById("city");
   let ErrorCity = document.getElementById("cityErrorMsg");
   let CityRegExp = new RegExp("^[a-z A-Z]{3,20}$");
   let TestCityRegExp = CityRegExp.test(inputcity.value);
@@ -346,7 +342,6 @@ OrderForm.email.addEventListener("change", function () {
 });
 
 function ValidEmail(inputemail) {
-  //let FormValidEmail = document.getElementById("email");
   let ErrorEmail = document.getElementById("emailErrorMsg");
   let EmailRegExp = new RegExp(
     "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",

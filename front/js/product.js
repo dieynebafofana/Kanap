@@ -1,7 +1,6 @@
 //paramètre transition index à la page produit
 let params = new URLSearchParams(document.location.search);
 let product_id = params.get("id");
-// getproduct(product_id)
 
 //récupérer les informations d'un produit
 
@@ -86,10 +85,10 @@ fetch(`http://localhost:3000/api/products/${product_id}`)
             panier.push(produit);
           }
 
-          //Préparer la varaiblea panier avec un JSON.strynify
+          //Préparer la variable panier avec un JSON.strynify
           panier = JSON.stringify(panier);
 
-          //Ajouter les panier au localStorage
+          //les Ajouter panier au localStorage
           localStorage.setItem("panier", panier);
 
           alert("Produit ajouté au panier");
