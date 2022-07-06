@@ -215,8 +215,8 @@ function form(event) {
         window.location.href = "confirmation.html?OrderId=" + OrderId;
       });
   } else {
-    console.log("Donné non valide");
-    //const xhttp = new XMLHttpRequest();
+    ValidForm();
+    return;
   }
 }
 
@@ -258,8 +258,9 @@ function ValidForm() {
   inputsForm.forEach((input) => {
     if (input.value == "")
       alert("Veuilez saisir tout les champs correspondants");
-    return;
+    return true;
   });
+  return false;
 }
 
 //RegEx  formulaire
@@ -305,7 +306,6 @@ OrderForm.address.addEventListener("change", function () {
 });
 
 function ValidAddress(inputaddress) {
-  console.log(inputaddress.value);
   let ErrorAddress = document.getElementById("addressErrorMsg");
   let AddressRegExp = new RegExp("^[A-Za-z0-9s ,']{5,80}$");
   let TestAddressRegExp = AddressRegExp.test(inputaddress.value);

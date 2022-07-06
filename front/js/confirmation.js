@@ -1,11 +1,9 @@
-//function urlParamsId() {
-let params = new URLSearchParams(document.location.search);
-let OrderId = params.get("OrderId");
-console.log(OrderId);
-//}
+function urlParamsOrderId() {
+  let params = new URLSearchParams(document.location.search);
+  let OrderId = params.get("OrderId");
+  return OrderId;
+}
 
-//function confirmOrderId() {
 let confirmOrder = document.getElementById("orderId");
-confirmOrder.textContent = OrderId;
-
-//}
+confirmOrder.textContent = urlParamsOrderId();
+window.localStorage.clear();
