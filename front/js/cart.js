@@ -6,7 +6,6 @@ fetch(url)
   })
   .then(function (products) {
     let LocalPanier = JSON.parse(localStorage.getItem("panier"));
-    console.log(LocalPanier);
 
     if (LocalPanier) {
       LocalPanier.forEach((itemPanier) => {
@@ -169,7 +168,6 @@ function deleteProduct(LocalPanier) {
           ),
           1
         );
-        console.log(LocalPanier);
         savePanier(LocalPanier);
         totalPrice(LocalPanier);
       }
@@ -210,7 +208,6 @@ function form(event) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
         let OrderId = data.orderId;
         window.location.href = "confirmation.html?OrderId=" + OrderId;
       });

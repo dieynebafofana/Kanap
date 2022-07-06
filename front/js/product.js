@@ -9,8 +9,6 @@ fetch(`http://localhost:3000/api/products/${product_id}`)
     return response.json();
   })
   .then(function (product) {
-    console.log(product);
-
     //créer les élèments du produit à intégrer dans le DOM
 
     let imgElt = document.querySelector(".item__img img");
@@ -27,10 +25,8 @@ fetch(`http://localhost:3000/api/products/${product_id}`)
     descriptionElt.textContent = product.description;
 
     let colorsElt = document.getElementById("colors");
-    // console.log(colorsElt,product.colors)
 
     product.colors.forEach((color) => {
-      // console.log(color)
       let optionElt = document.createElement("option");
       optionElt.setAttribute(`value`, color);
       optionElt.textContent = color;
@@ -44,7 +40,6 @@ fetch(`http://localhost:3000/api/products/${product_id}`)
     buttonPanier.addEventListener(
       "click",
       function () {
-        console.log(buttonPanier);
         //Récupérer les informations pour choisir les colors et la quantité
         let quantity = document.querySelector("input");
 
@@ -57,7 +52,6 @@ fetch(`http://localhost:3000/api/products/${product_id}`)
           color: colors.value,
           imgUrl: product.imageUrl,
         };
-        console.log(produit);
 
         //ajouter un produit au panier
         let panier = JSON.parse(localStorage.getItem("panier"));
@@ -76,7 +70,6 @@ fetch(`http://localhost:3000/api/products/${product_id}`)
           let findproduit = panier.find(
             (p) => p.id == produit.id && p.color == produit.color
           );
-          console.log(findproduit);
 
           if (findproduit) {
             findproduit.quantity =
