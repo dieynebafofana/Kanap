@@ -213,7 +213,6 @@ function form(event) {
       });
   } else {
     ValidForm();
-    return;
   }
 }
 
